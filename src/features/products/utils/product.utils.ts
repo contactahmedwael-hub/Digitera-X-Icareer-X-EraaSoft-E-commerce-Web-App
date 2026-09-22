@@ -69,7 +69,15 @@ export function getRelatedProducts(
   productId: string,
   limit = 4,
 ): Product[] {
-  return products.filter((product) => product.id !== productId).slice(0, limit);
+  const remaining = products.filter((product) => product.id !== productId);
+  const preferred = remaining.filter(
+    (product) => product.images[0] && product.category !== "atelier-oils",
+  );
+  const fallback = remaining.filter(
+    (product) => !preferred.some((item) => item.id === product.id),
+  );
+
+  return [...preferred, ...fallback].slice(0, limit);
 }
 
 export function parseProductListQuery(

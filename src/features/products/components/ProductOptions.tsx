@@ -34,9 +34,9 @@ export function ProductOptions({
                   type="button"
                   onClick={() => onChange("volume", volume.label)}
                   className={cn(
-                    "flex flex-col items-center gap-1 rounded border border-solid px-2 py-3",
+                    "flex flex-col items-center gap-1 rounded border-2 border-solid px-2 py-3",
                     selected
-                      ? "border-2 border-[#1a1a1a] bg-white"
+                      ? "border-[#1a1a1a] bg-white"
                       : "border-[#ebe6de] bg-transparent",
                   )}
                 >

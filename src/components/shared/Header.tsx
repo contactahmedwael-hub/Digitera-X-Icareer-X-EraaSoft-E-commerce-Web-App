@@ -16,8 +16,8 @@ export function Header() {
       <p className="bg-[#1a1a1a] px-4 py-3 text-center text-[10px] font-semibold tracking-[0.08em] text-white uppercase sm:text-[11px]">
         Complimentary signature gift wrapping on all orders above $150
       </p>
-      <div className="flex h-[72px] items-center justify-between gap-4 border-b border-solid border-[#ebe6de] px-4 sm:h-[90px] sm:px-6 md:px-10 lg:px-20">
-        <nav className="hidden min-w-0 flex-1 items-center gap-6 xl:flex xl:gap-10">
+      <div className="grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-solid border-[#ebe6de] px-4 sm:h-[90px] sm:px-6 md:px-10 lg:px-20">
+        <nav className="hidden min-w-0 items-center gap-6 xl:flex xl:gap-10">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
@@ -38,7 +38,7 @@ export function Header() {
         >
           O D O R A T U S
         </Link>
-        <div className="flex min-w-0 flex-1 items-center justify-end gap-4 sm:gap-6 lg:gap-8">
+        <div className="flex min-w-0 items-center justify-end gap-4 sm:gap-6 lg:gap-8">
           <form
             action={productPaths.list}
             className="hidden w-[200px] items-center gap-2 rounded-full border border-solid border-[#ebe6de] px-3 py-2 md:flex"
