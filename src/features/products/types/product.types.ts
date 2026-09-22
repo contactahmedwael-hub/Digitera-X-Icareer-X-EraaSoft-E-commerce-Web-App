@@ -6,6 +6,21 @@ export type ProductOption = {
   values: string[];
 };
 
+export type ProductVolume = {
+  label: string;
+  price: number;
+};
+
+export type ScentLayer = {
+  name: string;
+  notes: string;
+};
+
+export type ScentAnatomy = {
+  description: string;
+  layers: ScentLayer[];
+};
+
 export type Product = {
   id: ProductId;
   name: string;
@@ -17,6 +32,9 @@ export type Product = {
   scentFamily: string;
   occasion: string;
   options: ProductOption[];
+  volumes: ProductVolume[];
+  scentAnatomy: ScentAnatomy;
+  availableInAtelier: boolean;
 };
 
 export type ProductSort =

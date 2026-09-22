@@ -1,7 +1,9 @@
 import type {
+  Product,
   ProductListQuery,
   ProductSearchParams,
   ProductSort,
+  ProductVolume,
 } from "@/features/products/types/product.types";
 
 const SORT_VALUES: ProductSort[] = [
@@ -29,6 +31,45 @@ export function formatPrice(amount: number): string {
 
 export function formatWholePrice(amount: number): string {
   return `$${amount}`;
+}
+
+const SCENT_FAMILY_LABELS: Record<string, string> = {
+  floral: "Floral",
+  woody: "Woody",
+  oriental: "Oriental",
+  fresh: "Fresh",
+};
+
+const OCCASION_LABELS: Record<string, string> = {
+  "personal-use": "Personal Use",
+  wedding: "Wedding",
+  "gift-sets": "Gift Sets",
+  birthday: "Birthday",
+  evening: "Evening",
+};
+
+export function getScentFamilyLabel(scentFamily: string): string {
+  return SCENT_FAMILY_LABELS[scentFamily] ?? scentFamily;
+}
+
+export function getOccasionLabel(occasion: string): string {
+  return OCCASION_LABELS[occasion] ?? occasion;
+}
+
+export function getDefaultVolume(product: Product): ProductVolume {
+  return (
+    product.volumes.find((volume) => volume.price === product.price) ??
+    product.volumes.at(-1) ??
+    product.volumes[0] ?? { label: "100 ml", price: product.price }
+  );
+}
+
+export function getRelatedProducts(
+  products: Product[],
+  productId: string,
+  limit = 4,
+): Product[] {
+  return products.filter((product) => product.id !== productId).slice(0, limit);
 }
 
 export function parseProductListQuery(

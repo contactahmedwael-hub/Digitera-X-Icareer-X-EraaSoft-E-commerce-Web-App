@@ -1,8 +1,24 @@
-import { formatPrice, parseProductListQuery } from "./product.utils";
+import {
+  formatPrice,
+  getRelatedProducts,
+  parseProductListQuery,
+} from "./product.utils";
+import { mockProducts } from "@/features/products/services/products.mock-data";
 
 describe("formatPrice", () => {
   it("formats a USD amount", () => {
     expect(formatPrice(12.5)).toBe("$12.50");
+  });
+});
+
+describe("getRelatedProducts", () => {
+  it("excludes the current product and limits the list", () => {
+    const related = getRelatedProducts(mockProducts, "santal-parchment", 4);
+
+    expect(related).toHaveLength(4);
+    expect(related.map((product) => product.id)).not.toContain(
+      "santal-parchment",
+    );
   });
 });
 

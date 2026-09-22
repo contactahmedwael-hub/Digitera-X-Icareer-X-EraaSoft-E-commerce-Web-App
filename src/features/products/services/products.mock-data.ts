@@ -1,4 +1,29 @@
-import type { Product } from "@/features/products/types/product.types";
+import type {
+  Product,
+  ProductVolume,
+  ScentAnatomy,
+} from "@/features/products/types/product.types";
+
+function volumesFor(price: number): ProductVolume[] {
+  return [
+    { label: "30 ml", price: Math.round((price * 140) / 220) },
+    { label: "50 ml", price: Math.round((price * 180) / 220) },
+    { label: "100 ml", price },
+  ];
+}
+
+const SANTAL_ANATOMY: ScentAnatomy = {
+  description:
+    "Santal Parchment wraps around the skin like vintage vellum paper. It opens with bright top notes, shifting to clean papyrus and warm, rich sandalwood that dry down into dry cardamom and amber.",
+  layers: [
+    { name: "Top Notes", notes: "Sicilian Bergamot, Pink Pepper" },
+    { name: "Heart Notes", notes: "Egyptian Jasmine Sambac, Papyrus" },
+    {
+      name: "Base Notes",
+      notes: "West Indian Sandalwood, Cardamom, Amber",
+    },
+  ],
+};
 
 export const mockProducts: Product[] = [
   {
@@ -12,6 +37,17 @@ export const mockProducts: Product[] = [
     scentFamily: "floral",
     occasion: "personal-use",
     options: [],
+    volumes: volumesFor(195),
+    scentAnatomy: {
+      description:
+        "Fleur de Lune opens like moonlight on white petals. Jasmine sambac rises first, then a clean white musk settles close to the skin.",
+      layers: [
+        { name: "Top Notes", notes: "Neroli, Pear Blossom" },
+        { name: "Heart Notes", notes: "Jasmine Sambac, Orange Flower" },
+        { name: "Base Notes", notes: "White Musk, Blonde Woods" },
+      ],
+    },
+    availableInAtelier: true,
   },
   {
     id: "santal-parchment",
@@ -19,11 +55,22 @@ export const mockProducts: Product[] = [
     description: "Warm sandalwood layered with cardamom.",
     notes: "Woody / Sandalwood & Cardamom",
     price: 220,
-    images: ["/images/products/santal-parchment.png"],
+    images: [
+      "/images/products/santal-parchment.png",
+      "/images/products/santal-parchment-2.png",
+      "/images/products/santal-parchment-3.png",
+    ],
     category: "pure-extractions",
     scentFamily: "woody",
-    occasion: "personal-use",
+    occasion: "evening",
     options: [],
+    volumes: [
+      { label: "30 ml", price: 140 },
+      { label: "50 ml", price: 180 },
+      { label: "100 ml", price: 220 },
+    ],
+    scentAnatomy: SANTAL_ANATOMY,
+    availableInAtelier: true,
   },
   {
     id: "noir-cocoon",
@@ -36,6 +83,17 @@ export const mockProducts: Product[] = [
     scentFamily: "oriental",
     occasion: "wedding",
     options: [],
+    volumes: volumesFor(240),
+    scentAnatomy: {
+      description:
+        "Noir Cocoon is a warm enclosure of tobacco leaf and resin. Smoke and spice give way to a deep amber dry-down.",
+      layers: [
+        { name: "Top Notes", notes: "Black Pepper, Bergamot" },
+        { name: "Heart Notes", notes: "Tobacco Leaf, Labdanum" },
+        { name: "Base Notes", notes: "Amber, Tonka Bean" },
+      ],
+    },
+    availableInAtelier: true,
   },
   {
     id: "sol-dor",
@@ -48,6 +106,17 @@ export const mockProducts: Product[] = [
     scentFamily: "fresh",
     occasion: "personal-use",
     options: [],
+    volumes: volumesFor(185),
+    scentAnatomy: {
+      description:
+        "Sol d'Or is sunlight on salt water. Bright citrus lifts first, then a mineral sea-salt heart dries into warm woods.",
+      layers: [
+        { name: "Top Notes", notes: "Bergamot, Lemon Zest" },
+        { name: "Heart Notes", notes: "Sea Salt, Neroli" },
+        { name: "Base Notes", notes: "Driftwood, White Musk" },
+      ],
+    },
+    availableInAtelier: true,
   },
   {
     id: "atelier-oud",
@@ -60,6 +129,17 @@ export const mockProducts: Product[] = [
     scentFamily: "woody",
     occasion: "gift-sets",
     options: [],
+    volumes: volumesFor(310),
+    scentAnatomy: {
+      description:
+        "Atelier Oud is a concentrated wood oil: saffron heat over smoky oud, settling into leathered resin.",
+      layers: [
+        { name: "Top Notes", notes: "Saffron, Pink Pepper" },
+        { name: "Heart Notes", notes: "Oud, Rose Absolute" },
+        { name: "Base Notes", notes: "Leather, Patchouli" },
+      ],
+    },
+    availableInAtelier: true,
   },
   {
     id: "rose-absolute",
@@ -72,5 +152,16 @@ export const mockProducts: Product[] = [
     scentFamily: "floral",
     occasion: "birthday",
     options: [],
+    volumes: volumesFor(205),
+    scentAnatomy: {
+      description:
+        "Rose Absolute is a true damask rose, lifted by a green stem and grounded in dry cedar.",
+      layers: [
+        { name: "Top Notes", notes: "Rosewater, Green Leaves" },
+        { name: "Heart Notes", notes: "Damask Rose, Peony" },
+        { name: "Base Notes", notes: "Cedar, Soft Musk" },
+      ],
+    },
+    availableInAtelier: true,
   },
 ];

@@ -6,6 +6,7 @@ export type AddToCartInput = {
   price: number;
   image?: string;
   selectedOptions: Record<string, string>;
+  quantity?: number;
 };
 
 export type CartLine = AddToCartInput & {

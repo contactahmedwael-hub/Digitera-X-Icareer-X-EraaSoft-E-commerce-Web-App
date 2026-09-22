@@ -1,7 +1,7 @@
 describe("application routes", () => {
   it("shows the product listing page", () => {
     cy.visit("/products");
-    cy.contains("Products").should("be.visible");
+    cy.contains("All Fragrances").should("be.visible");
   });
 
   it("shows the cart page", () => {
