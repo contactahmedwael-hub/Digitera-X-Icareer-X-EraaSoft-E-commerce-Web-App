@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+/* Light and dark themes derived from Figma brand hues */
+:root,
+:root[data-theme="light"] {
+  --page: #faf8f5;
+  --surface: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #605a54;
+  --line: #ebe6de;
+  --shell: #f2ede4;
+  --sand: #f4f0eb;
+  --inverse: #1a1a1a;
+  --on-inverse: #faf8f5;
+}
+
+:root[data-theme="dark"] {
+  --page: #141312;
+  --surface: #1c1a18;
+  --ink: #f2ede4;
+  --muted: #a39b91;
+  --line: #2e2b28;
+  --shell: #1c1a18;
+  --sand: #201d1a;
+  --inverse: #f2ede4;
+  --on-inverse: #141312;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-shell: var(--shell);
+  --color-sand: var(--sand);
+  --color-inverse: var(--inverse);
+  --color-on-inverse: var(--on-inverse);
+
+  /* Constant in both themes */
+  --color-gold: #c5a880;
+  --color-night: #1a1a1a; /* the footer stays dark in every theme */
+  --color-on-night: #faf8f5;
+  --color-success: #10b981;
+
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-instrument-serif);
+
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -180% 0; }
+  100% { background-position: 180% 0; }
+}
+
+/* Droplet falling inside the bottle loader */
+@keyframes pour {
+  0% { transform: translateY(-6px) scale(0.6); opacity: 0; }
+  35% { opacity: 1; }
+  100% { transform: translateY(10px) scale(1); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px -3px rgba(197, 168, 128, 0.25); }
+  50% { box-shadow: 0 0 25px 2px rgba(197, 168, 128, 0.5); }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Clean on-brand focus ring for keyboard navigation only */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Dual-handle price slider: transparent track, only the thumbs are hit-tested */
+.range-thumb {
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+
+.range-thumb::-webkit-slider-thumb {
+  appearance: none;
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-gold);
+  background: var(--surface);
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgb(26 26 26 / 0.2);
+}
+
+.range-thumb::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-gold);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.range-thumb::-moz-range-track {
+  background: transparent;
+}
+
+.skeleton-sheen {
+  background-image: linear-gradient(
+    90deg,
+    var(--line) 0%,
+    color-mix(in srgb, var(--line) 55%, var(--surface)) 50%,
+    var(--line) 100%
+  );
+  background-size: 200% 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+ * Chromium draws its own clear "×" inside a search field, which collides with
+ * the overlay's close button. The field is cleared by closing the sheet.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}

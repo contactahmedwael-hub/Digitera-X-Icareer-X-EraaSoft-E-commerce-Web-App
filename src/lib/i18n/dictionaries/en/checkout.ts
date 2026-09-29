@@ -1,0 +1,70 @@
+export const checkout = {
+  checkout: {
+    title: "Checkout",
+    subtitle: "Two steps: where it goes, and how you would like to pay.",
+    shippingHeading: "Shipping details",
+    paymentHeading: "Payment method",
+    summaryHeading: "Order summary",
+
+    fullName: "Full name",
+    fullNamePlaceholder: "Ahmed Wael",
+    email: "Email address",
+    emailPlaceholder: "you@example.com",
+    phone: "Phone number",
+    phonePlaceholder: "+20 100 000 0000",
+    address: "Street address",
+    addressPlaceholder: "Building, street, district",
+    city: "City",
+    cityPlaceholder: "Cairo",
+    postalCode: "Postal code",
+    postalCodePlaceholder: "Optional",
+    notes: "Delivery notes",
+    notesPlaceholder: "Optional — a landmark, a preferred time",
+
+    cashOnDelivery: "Cash on delivery",
+    cashOnDeliveryNote: "Pay the courier when your order arrives.",
+    bankTransfer: "Bank transfer",
+    bankTransferNote:
+      "We send the account details by email once the order is confirmed.",
+
+    subtotal: "Subtotal",
+    shipping: "Shipping",
+    freeShipping: "Complimentary",
+    shippingNote: "Free shipping on orders above ${threshold}.",
+    total: "Total",
+    items: "Items",
+    placeOrder: "Place order",
+    placingOrder: "Placing your order",
+    backToBag: "Back to your bag",
+    emptyTitle: "Your bag is empty",
+    emptyBody: "Add a fragrance before placing an order.",
+    demoNotice:
+      "This is a design demonstration. No payment is taken and no order is really sent — everything is kept in this browser.",
+
+    confirmedTitle: "Order confirmed",
+    confirmedBody:
+      "Thank you, {name}. We have your order and will be in touch at {email}.",
+    orderNumber: "Order number",
+    invoice: "Order invoice",
+    sendOnWhatsApp: "Send the invoice on WhatsApp",
+    whatsAppNote:
+      "There is no backend, so WhatsApp is how the order reaches the house.",
+    placedOn: "Placed on",
+    deliverTo: "Deliver to",
+    paidWith: "Payment",
+    notFoundTitle: "Order not found",
+    notFoundBody: "We could not find an order with that number.",
+
+    ordersTitle: "Your orders",
+    ordersEmpty: "No orders yet. Anything you buy will be listed here.",
+    viewOrder: "View order",
+    orderItemCount: "{count} items",
+    orderItemCountOne: "1 item",
+
+    errorRequired: "This field is required.",
+    errorEmailInvalid: "Enter a valid email address.",
+    errorPhoneInvalid: "Enter a valid phone number.",
+    errorAddressTooShort: "Please give the full street address.",
+    errorPostalCodeInvalid: "Enter a valid postal code, or leave it empty.",
+  },
+} as const;
