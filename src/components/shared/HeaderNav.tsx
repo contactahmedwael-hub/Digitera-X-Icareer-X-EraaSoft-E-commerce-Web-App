@@ -15,7 +15,7 @@ export function HeaderNav({ nav }: { nav: NavLink[] }) {
       return pathname === "/";
     }
 
-    // "shop" (المتجر) is ONLY active on /products if no specific subcategory is selected
+    // "shop" is ONLY active on /products if no specific subcategory is selected
     if (link.key === "shop") {
       return (
         pathname === "/products" &&
@@ -23,15 +23,7 @@ export function HeaderNav({ nav }: { nav: NavLink[] }) {
       );
     }
 
-    // "categories" (التصنيفات) is active when category query is pure-extractions
-    if (link.key === "categories") {
-      return (
-        pathname === "/products" &&
-        currentCategory === "pure-extractions"
-      );
-    }
-
-    // "atelier" (الأتيليه) is active when category query is atelier-oils
+    // "atelier" is active when category query is atelier-oils
     if (link.key === "atelier") {
       return (
         pathname === "/products" &&

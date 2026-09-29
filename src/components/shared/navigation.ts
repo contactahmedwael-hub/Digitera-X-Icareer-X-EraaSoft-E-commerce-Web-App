@@ -18,11 +18,6 @@ export function usePrimaryNav(): NavLink[] {
     { key: "home", label: dict.nav.home, href: "/" },
     { key: "shop", label: dict.nav.shop, href: productPaths.list },
     {
-      key: "categories",
-      label: dict.nav.categories,
-      href: `${productPaths.list}?category=pure-extractions`,
-    },
-    {
       key: "atelier",
       label: dict.nav.atelier,
       href: `${productPaths.list}?category=atelier-oils`,
