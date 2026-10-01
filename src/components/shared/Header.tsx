@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { CloseIcon, MenuIcon } from "@/components/icons";
 import { AnnouncementBar } from "@/components/shared/AnnouncementBar";
 import { AccountMenu } from "@/components/shared/AccountMenu";
@@ -24,7 +25,12 @@ export function Header() {
   const { dict } = useI18n();
   const nav = usePrimaryNav();
   const scrolled = useScrolled(80);
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-40">
@@ -32,7 +38,7 @@ export function Header() {
       <div
         className={cn(
           "overflow-hidden transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-          scrolled ? "max-h-0 opacity-0" : "max-h-16 opacity-100",
+          scrolled ? "max-h-0 opacity-0" : "max-h-40 opacity-100",
         )}
       >
         <AnnouncementBar />
